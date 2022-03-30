@@ -19,3 +19,50 @@ function computerPlay() {
     return 'Scissors'; 
     
 }
+
+
+function singleRound(playerSelection,computerSelection){
+
+    console.log(computerSelection);
+
+    /*evaluate acording to playerSelection which case is being use */
+    switch(true) {
+
+        /*player choose 'Rock' */
+        case playerSelection === 'Rock':
+
+            if(computerSelection === 'Paper'){
+                return 'You Lose! Paper beats Rock';
+            }
+            else if(computerSelection === 'Rock'){
+                return 'Tied game! Both picks were Rock';
+            }
+            else
+            return 'You Win! Rock beats Scissors';
+        
+        /*player choose 'Paper' */
+        case playerSelection === 'Paper':
+            if(computerSelection === 'Scissors'){
+                return 'You Lose! Scissors beats Paper';
+            }
+            else if(computerSelection === 'Paper'){
+                return 'Tied game! Both picks were Paper';
+            }
+            else
+            return 'You Win! Paper beats Rock';
+        
+        /*player choose 'Scissors' */
+        case playerSelection === 'Scissors':
+            if(computerSelection === 'Rock'){
+                return 'You Lose! Rock beats Scissors';
+            }
+            else if(computerSelection === 'Scissors'){
+                return 'Tied game! Both picks were Scissors';
+            }
+            else
+            return 'You Win! Scissors beats Paper';
+    }
+
+}
+
+
