@@ -1,29 +1,34 @@
 
+
+/* function to create a random number between 1 and 100
+ to asign the computer a selection to be returned */
+
 function computerPlay() {
     
-    /*create variable to store a random number between 1 and 100 */
-    let randomNumber = Math.floor(Math.random()*100)+ 1;
+    /*create variable to store a random number between 1 and 3 */
+    let randomNumber = Math.floor(Math.random()*3)+ 1;
 
-    /* if randomNumber <=33 is rock */
-    if(randomNumber <= 33){
+
+    /* if randomNumber === 1 is rock */
+    if(randomNumber === 1){
         return 'Rock';
     }
 
-    /* if randomNumber >33 && randomNumber <=66 is paper */
-    else if (randomNumber >33 && randomNumber <= 66){
+    /* if randomNumber === 2 */
+    else if (randomNumber === 2){
         return 'Paper';
     }
 
-    /* if randomNumber >66 && randomNumber <=100 is scissors */
+    /* if randomNumber === 3 */
     else
     return 'Scissors'; 
     
 }
 
+/* function to play a single round of rock paper scissors */
 
 function singleRound(playerSelection,computerSelection){
 
-    console.log(computerSelection);
 
     /*convert player selection string to lower case */
     playerSelection = playerSelection.toLowerCase();
@@ -35,7 +40,6 @@ function singleRound(playerSelection,computerSelection){
     /*Capitalize first letter of playerSelection string and add rest of lowercase string */
     playerSelection = playerSelection.charAt(0).toUpperCase() + string.slice(1);
 
-    console.log(playerSelection);
 
     /*evaluate acording to playerSelection which case is being use */
     switch(true) {
@@ -44,43 +48,127 @@ function singleRound(playerSelection,computerSelection){
         case playerSelection === 'Rock':
 
             if(computerSelection === 'Paper'){
-                return 'You Lose! Paper beats Rock';
+                console.log("Computer Chose Paper");
+                console.log("Paper beats Rock, You Lose!");
+                return 'You Lose!';
             }
             else if(computerSelection === 'Rock'){
-                return 'Tied game! Both picks were Rock';
+                console.log("Computer chose Rock");
+                console.log("Tied game!");
+                return 'Tied Game!';
             }
-            else
-            return 'You Win! Rock beats Scissors';
+            else {
+                console.log("Computer chose Scissors");
+                console.log("Rock beats Scissors, You Win!");
+                return 'You Win!';
+            }
+            
         
         /*player choose 'Paper' */
         case playerSelection === 'Paper':
             if(computerSelection === 'Scissors'){
-                return 'You Lose! Scissors beats Paper';
+                console.log("Computer Chose Scissors");
+                console.log("Scissors beats Paper, You Lose!");
+                return 'You Lose!';
             }
             else if(computerSelection === 'Paper'){
-                return 'Tied game! Both picks were Paper';
+                console.log("Computer chose Paper");
+                console.log("Tied game!");
+                return 'Tied Game!';
             }
-            else
-            return 'You Win! Paper beats Rock';
+            else{
+                console.log("Computer chose Rock");
+                console.log("Paper beats Rock, You Win!");
+                return 'You Win!';
+            }
         
         /*player choose 'Scissors' */
         case playerSelection === 'Scissors':
             if(computerSelection === 'Rock'){
-                return 'You Lose! Rock beats Scissors';
+                console.log("Computer chose Rock");
+                console.log("Rock beats Scissors, You Lose!");
+                return 'You Lose!';
             }
             else if(computerSelection === 'Scissors'){
-                return 'Tied game! Both picks were Scissors';
+                console.log("Computer chose Scissors");
+                console.log("Tied game!");
+                return 'Tied Game!';
             }
-            else
-            return 'You Win! Scissors beats Paper';
+            else{
+                console.log("Computer chose Paper");
+                console.log("Scissors beats Paper, You Win!");
+                return 'You Win!';
+
+            }
+            
         
+        /*player wrote wrong input option */
         default:
-            return 'Error check player Selection input';
+            console.log('Error! Incorrect option check player selection input');
+            return 'error';
     }
 
 }
 
+function game(){
 
-/*create variable to store string and convert all of it to lower case*/
+    let playerSelection,computerSelection;
+
+    /*Variable initialization */
+    let playerCount = 0;
+    let computerCount = 0;
 
 
+    for (let i = 0; i < 5; i++) {
+        
+        let result = '';
+
+        /*player chooses rock-paper-scissors and it's stored in playerSelection */
+        playerSelection = prompt("Choose Rock-Paper-Scissors")
+
+        /*Computer generates random choice and stores it in computerSelection */
+        computerSelection = computerPlay();
+
+        /*Display current round number */
+        console.log(`Round No ${i+1}:`);
+
+        /*Display what the player selected */
+        console.log(`you chose ${playerSelection}`);
+
+
+
+        result = singleRound(playerSelection,computerSelection);
+
+        
+        /* evaluation to see if player win or lose */
+
+        if (result === 'You Win!'){
+            playerCount = playerCount + 1;
+        }
+        else if (result === 'You Lose!'){
+            computerCount = computerCount + 1;
+        }
+
+        /* Display current scores */
+
+        console.log(`You have won ${playerCount} times`);
+        console.log(`the computer has won ${computerCount} times`);
+        
+     }
+
+     /*evaluate who won the game and inform the outcome */
+
+     if(playerCount > computerCount) {
+
+        console.log("Congratulations! You have won the game!");
+     }
+     else if (playerCount < computerCount) {
+
+        console.log("Oh no! you have lost the game to the computer! better luck next time");
+
+     }
+     else
+     console.log("The game ended up in a tie!");
+
+
+}
