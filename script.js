@@ -25,6 +25,18 @@ function singleRound(playerSelection,computerSelection){
 
     console.log(computerSelection);
 
+    /*convert player selection string to lower case */
+    playerSelection = playerSelection.toLowerCase();
+
+    /*create local variable to store playerSelection string*/
+    let string = playerSelection;
+
+
+    /*Capitalize first letter of playerSelection string and add rest of lowercase string */
+    playerSelection = playerSelection.charAt(0).toUpperCase() + string.slice(1);
+
+    console.log(playerSelection);
+
     /*evaluate acording to playerSelection which case is being use */
     switch(true) {
 
@@ -61,8 +73,14 @@ function singleRound(playerSelection,computerSelection){
             }
             else
             return 'You Win! Scissors beats Paper';
+        
+        default:
+            return 'Error check player Selection input';
     }
 
 }
+
+
+/*create variable to store string and convert all of it to lower case*/
 
 
