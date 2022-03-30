@@ -5,7 +5,7 @@
 
 function computerPlay() {
     
-    /*create variable to store a random number between 1 and 3 */
+    /*create variable to store a random number between 0 and 2 */
     let randomNumber = Math.floor(Math.random()*3);
 
 
