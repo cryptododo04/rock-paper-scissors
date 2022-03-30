@@ -1,25 +1,25 @@
 
 
-/* function to create a random number between 1 and 100
+/* function to create a random number between 1 and 3
  to asign the computer a selection to be returned */
 
 function computerPlay() {
     
     /*create variable to store a random number between 1 and 3 */
-    let randomNumber = Math.floor(Math.random()*3)+ 1;
+    let randomNumber = Math.floor(Math.random()*3);
 
 
-    /* if randomNumber === 1 is rock */
-    if(randomNumber === 1){
+    /* if randomNumber === 0 is rock */
+    if(randomNumber === 0){
         return 'Rock';
     }
 
-    /* if randomNumber === 2 */
-    else if (randomNumber === 2){
+    /* if randomNumber === 1 */
+    else if (randomNumber === 1){
         return 'Paper';
     }
 
-    /* if randomNumber === 3 */
+    /* if randomNumber === 2 */
     else
     return 'Scissors'; 
     
