@@ -11,7 +11,7 @@ function computerPlay() {
 
     /* if randomNumber === 0 is rock */
     if(randomNumber === 0){
-        return 'Rock';
+        return 'Rock';  
     }
 
     /* if randomNumber === 1 */
@@ -27,8 +27,10 @@ function computerPlay() {
 
 /* function to play a single round of rock paper scissors */
 
-function singleRound(playerSelection,computerSelection){
+function singleRound(playerSelection){
 
+    //computer selection
+    computerSelection = computerPlay();
 
     /*convert player selection string to lower case */
     playerSelection = playerSelection.toLowerCase();
@@ -119,7 +121,6 @@ function game(){
     let computerCount = 0;
 
 
-    for (let i = 0; i < 5; i++) {
         
         let result = '';
 
@@ -158,17 +159,30 @@ function game(){
 
      /*evaluate who won the game and inform the outcome */
 
-     if(playerCount > computerCount) {
 
-        console.log("Congratulations! You have won the game!");
-     }
-     else if (playerCount < computerCount) {
+// Creation of button nodes
+const rockBtn = document.querySelector('#rock-button');
 
-        console.log("Oh no! you have lost the game to the computer! better luck next time");
+const paperBtn = document.querySelector('#paper-button');
 
-     }
-     else
-     console.log("The game ended up in a tie!");
+const scissorsBtn = document.querySelector('#scissors-button');
 
+console.log(rockBtn);
 
-}
+console.log(paperBtn);
+
+console.log(scissorsBtn);
+
+rockBtn.addEventListener('click', () => singleRound('rock'));
+
+paperBtn.addEventListener('click', () => singleRound('paper'));
+
+scissorsBtn.addEventListener('click', () => singleRound('scissors'));
+
+/*
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', () => {
+  alert("Hello World");
+});
+
+*/
