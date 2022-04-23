@@ -11,29 +11,98 @@
     <title>Rock Paper Scissors by Cryptododo04</title>
 </head>
 
-<h1>Welcome to Rock Paper Scissors!</h1>
-
-
-<div id="buttons-container">
-    
-    <div id="rock-button" class="buttons">
-        <button>ROCK</button>
-    </div>
-
-    <div id="paper-button" class="buttons">
-        <button>PAPER</button>
-    </div>
-
-    <div id="scissors-button" class="buttons">
-        <button>SCISSORS</button>
-    </div>
-
-</div>
-
-
-
-
 <body>
-    
+
+    <header class="blue-background">
+
+        <h1 class="">Rock Paper Scissors</h1>
+
+    </header>
+
+
+    <main id="main">
+
+        <div id="scoreboard-main-container" class="black-border">    
+        
+                <div id="scoreboard-title-container" class="blue-background">
+                        
+                        <div id="scoreboard-header" class="black-white">Scoreboard</div>
+                    
+                    </div>
+                    
+                    <div id="scoreboard-container" class="blue-background">
+                        
+                        <div id="playerScoreContainer">
+                            
+                            <div id="playerScore" class="score black-white">Player: 0</div>
+                        
+                        </div>
+
+                        <div id="computerScoreContainer">
+
+                            <div id="computerScore" class="score black-white">Computer: 0</div>
+                        
+                        </div>
+
+                    </div>
+            
+        </div>
+
+
+        <div id="buttons-main-container">
+
+                <div id="buttons-main-title" class="black-border blue-background">Choose your weapon!</div>
+
+                <div id="buttons-container" class="black-border blue-background">
+                    
+                    <div id="rock-button" class="buttons">
+
+                        <input type="image" src="./resources/images/rock.png" name="rock-handsign" id="rock-input" class="hand-logo black-border">
+                        
+                        <div id="rock-button-container">
+
+                            <button id="rock-text-button" class="button-text black-white buttonSize">ROCK</button>
+                        </div>
+                    
+                    </div>
+
+
+                    <div id="paper-button" class="buttons">
+                        
+                        
+                        <input type="image" src="./resources/images/paper.png" name="paper-handsign" id="paper-input" class="hand-logo black-border">
+                        
+                        <div id="paper-button-container">
+
+                            <button id="paper-text-button" class="button-text black-white buttonSize">PAPER</button>
+                        </div>
+
+                    </div>
+
+                    <div id="scissors-button" class="buttons">
+                        
+                        <input type="image" src="./resources/images/scissors.png" name="scissors-handsign" id="scissors-input" class="hand-logo black-border">
+
+                        <div id="scissors-button-container">
+
+                            <button id="scissors-text-button" class="button-text black-white buttonSize">SCISSORS</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+        <div id="footer-container" class="text-center blue-background">
+
+            <div id="footer-text">Created by Cryptododo04</div>
+        </div>
+    </footer>
+
 </body>
 </html>

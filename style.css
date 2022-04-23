@@ -1,10 +1,233 @@
-* {
-    border: red solid 1px;
+
+
+body{
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+
+    margin: 0px;
+
+    
+}
+
+
+.text-center{
+    text-align: center;
+}
+
+header{
+    border-bottom: 2px black solid;
+    border-right: 2px black solid;
+    border-left: 2px black solid;
+}
+
+#footer-container{
+    padding: 10px;
+    border-top: black solid 1px;
+    border-left: black solid 1px;
+    border-right: black solid 1px;
+}
+
+#footer-text{
+    font-size: 20px;
+}
+
+
+.black-white{
+    background-color: black;
+    color: white;
+}
+
+
+
+.green-background{
+    background-color: rgb(39, 167, 0);
+}
+
+.blue-background{
+    background-color: rgb(1, 120, 150);
+}
+
+.black-border{
+    border: black solid 2px;
+}
+
+.white-border{
+    border: white solid 2px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+#scoreboard-title-container{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 2px solid black;
+}
+
+#scoreboard-main-container{
+    margin-bottom: 30px;
+}
+
+#scoreboard-header {
+    text-align: center;
+    margin-top: 0;
+    font-size: 36px;    
+}
+
+.score{
+    font-size: 30px;
+}
+
+
+
+#scoreboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    padding: 20px;
+    margin-top: 15px;
+
+    border-top: black 2px solid;
+
+}
+
+#playerScoreContainer{
+    display: flex;
+}
+
+#computerScoreContainer{
+    display: flex;
+}
+
+#buttons-main-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#buttons-main-title{
+    text-align: center;
+    margin: 10px;
+    padding: 15px;
+    font-size: 25px;
+    font-weight: bolder;
 }
 
 #buttons-container {
     text-align: center;
     display: flex;
     justify-content:space-evenly;
+    
+
+    gap: 20px;
+    margin: 10px;
+
+    margin-bottom: 20px;
+
+    padding: 5px;
+    
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.hand-logo{
+    height: 100%;
+    width: 100%;
+    margin-bottom: 15px;
+
+    
+    max-width: 140px;
+    max-height: 220px;
+    
+
+}
+
+.button-text{
+    font-size: 22px;
+}
+
+#rock-button-container{
+    align-self: stretch;
+}
+
+#paper-button-container{
+    align-self: stretch;
+}
+
+#scissors-button-container{
+    align-self: stretch;
+}
+
+
+@media (max-width: 450px) {
+
+    .hand-logo{
+        max-width: 90px;
+        
+    }
+
+    #buttons-container {
+        display: flex;
+        justify-content:space-evenly;
+        
+    
+        gap: 15px;
+        margin: 10px;
+    
+        padding: 5px;
+        
+    }
+
+    #scissors-button{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-text{
+        font-size: 16px;
+    }
+    
+}
+
+
+.buttonSize{
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+
+
+#resultDiv{
+    font-size: 30px;
+    text-align: center;
+    margin: 15px;
+
+}
+
+#replay-container{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#replay-button{
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
 }
 

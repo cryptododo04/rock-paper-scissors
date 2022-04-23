@@ -1,4 +1,75 @@
+let rounds = 0, playerWinRounds = 0, computerWinRounds = 0;
 
+
+// Creation of button nodes
+const rockBtn = document.querySelector('#rock-input');
+
+const paperBtn = document.querySelector('#paper-input');
+
+const scissorsBtn = document.querySelector('#scissors-input');
+
+const rockTextBtn = document.querySelector('#rock-text-button');
+
+const paperTextBtn = document.querySelector('#paper-text-button');
+
+const scissorsTextBtn = document.querySelector('#scissors-text-button');
+
+
+
+
+//creation of event listeners on play buttons
+rockBtn.addEventListener('click', () => playRound('rock'));
+
+paperBtn.addEventListener('click', () => playRound('paper'));
+
+scissorsBtn.addEventListener('click', () => playRound('scissors'));
+
+rockTextBtn.addEventListener('click', () => playRound('rock')); 
+
+paperTextBtn.addEventListener('click', () => playRound('paper'));
+
+scissorsTextBtn.addEventListener('click', () => playRound('scissors'));
+
+
+
+
+//create scores nodes
+
+const playerScore = document.querySelector('#playerScore');
+
+const computerScore = document.querySelector('#computerScore');
+
+console.log(playerScore);
+
+console.log(computerScore);
+
+
+//
+
+
+//create body node
+const main = document.querySelector('main');
+
+console.log(main);
+
+//create result container node
+
+const resultDivContainer = document.createElement('div');
+
+resultDivContainer.id = 'resultDivContainer';
+
+//create resultDiv node
+
+const resultDiv = document.createElement('div');
+
+resultDiv.id = 'resultDiv';
+
+
+resultDivContainer.appendChild(resultDiv);
+
+resultDiv.textContent = ''
+
+main.appendChild(resultDivContainer);
 
 /* function to create a random number between 1 and 3
  to asign the computer a selection to be returned */
@@ -27,7 +98,18 @@ function computerPlay() {
 
 /* function to play a single round of rock paper scissors */
 
+
 function singleRound(playerSelection){
+
+    //after the first click (first round) add styles to result div
+    //to avoid showing empty divs with borders and colors
+
+    resultDivContainer.classList.add('black-border');
+    resultDivContainer.classList.add('blue-background');
+
+    resultDiv.classList.add('white-border');
+    resultDiv.classList.add('black-white');
+
 
     //computer selection
     computerSelection = computerPlay();
@@ -50,16 +132,20 @@ function singleRound(playerSelection){
         case playerSelection === 'Rock':
 
             if(computerSelection === 'Paper'){
+                resultDiv.innerText = "Computer Chose Paper\n Paper beats Rock, You Lose!"; 
                 console.log("Computer Chose Paper");
                 console.log("Paper beats Rock, You Lose!");
                 return 'You Lose!';
             }
             else if(computerSelection === 'Rock'){
+                
+                resultDiv.innerText = "Computer Chose Rock\n Tied game!"; 
                 console.log("Computer chose Rock");
                 console.log("Tied game!");
                 return 'Tied Game!';
             }
             else {
+                resultDiv.innerText = "Computer Chose scissors\n Rock beats Scissors, You win!"; 
                 console.log("Computer chose Scissors");
                 console.log("Rock beats Scissors, You Win!");
                 return 'You Win!';
@@ -69,34 +155,40 @@ function singleRound(playerSelection){
         /*player choose 'Paper' */
         case playerSelection === 'Paper':
             if(computerSelection === 'Scissors'){
-                console.log("Computer Chose Scissors");
-                console.log("Scissors beats Paper, You Lose!");
+
+                resultDiv.innerText = "Computer Chose Scissors\n Scissors beats Paper, You Lose!"; 
                 return 'You Lose!';
             }
             else if(computerSelection === 'Paper'){
-                console.log("Computer chose Paper");
-                console.log("Tied game!");
+
+                resultDiv.innerText = "Computer Chose Paper\n Tied game"; 
                 return 'Tied Game!';
             }
             else{
-                console.log("Computer chose Rock");
-                console.log("Paper beats Rock, You Win!");
+
+                resultDiv.innerText = "Computer Chose Rock\n Paper beats Rock, You Win!"; 
                 return 'You Win!';
             }
         
         /*player choose 'Scissors' */
         case playerSelection === 'Scissors':
             if(computerSelection === 'Rock'){
+                
+                resultDiv.innerText = "Computer Chose Rock\n Rock beats Scissors, You Lose!"; 
                 console.log("Computer chose Rock");
                 console.log("Rock beats Scissors, You Lose!");
                 return 'You Lose!';
             }
             else if(computerSelection === 'Scissors'){
+
+                resultDiv.innerText = "Computer Chose Scissors\n Tied game!"; 
                 console.log("Computer chose Scissors");
                 console.log("Tied game!");
                 return 'Tied Game!';
             }
             else{
+
+                resultDiv.innerText = "Computer Chose Paper\n Scissors beats Paper, You Win!"; 
                 console.log("Computer chose Paper");
                 console.log("Scissors beats Paper, You Win!");
                 return 'You Win!';
@@ -112,77 +204,79 @@ function singleRound(playerSelection){
 
 }
 
-function game(){
+//function to play single round and reflect scores
 
-    let playerSelection,computerSelection;
+function playRound(playerSelection){
 
-    /*Variable initialization */
-    let playerCount = 0;
-    let computerCount = 0;
+    
+    let roundResult = singleRound(playerSelection);
+
+    if(roundResult === 'You Win!'){
+
+        ++playerWinRounds;
+
+        playerScore.textContent = `Player: ${playerWinRounds}`
 
 
+    }
+
+    else if(roundResult === 'You Lose!'){
         
-        let result = '';
-
-        /*player chooses rock-paper-scissors and it's stored in playerSelection */
-        playerSelection = prompt("Choose Rock-Paper-Scissors")
-
-        /*Computer generates random choice and stores it in computerSelection */
-        computerSelection = computerPlay();
-
-        /*Display current round number */
-        console.log(`Round No ${i+1}:`);
-
-        /*Display what the player selected */
-        console.log(`you chose ${playerSelection}`);
-
-
-
-        result = singleRound(playerSelection,computerSelection);
-
+        ++computerWinRounds;
         
-        /* evaluation to see if player win or lose */
+        computerScore.textContent = `Computer: ${computerWinRounds}`;
 
-        if (result === 'You Win!'){
-            playerCount = playerCount + 1;
+    }
+
+    if(playerWinRounds === 5 || computerWinRounds === 5){
+
+        //disable buttons to stop game
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled =true;
+
+        rockTextBtn.disabled = true;
+        paperTextBtn.disabled = true;
+        scissorsTextBtn.disabled = true;
+
+        //create container div for replay button
+        const replayDivContainer = document.createElement('div');
+
+        replayDivContainer.id = "replay-container";
+
+        //create replay button to reload page to play again
+        const replayBtn = document.createElement('button');
+
+        replayBtn.id='replay-button';
+
+        replayBtn.textContent = 'Play again!';
+
+        replayBtn.classList.add('black-white')
+
+        replayDivContainer.appendChild(replayBtn);
+
+        main.appendChild(replayDivContainer);
+
+        replayBtn.addEventListener('click', () => reloadGame());
+
+        //If player wins: 
+
+        if(playerWinRounds === 5){
+            resultDiv.textContent = 'Congratulations you won!!!';
         }
-        else if (result === 'You Lose!'){
-            computerCount = computerCount + 1;
+        //if Computer wins
+        else if(computerWinRounds === 5){
+            resultDiv.textContent = 'Oh no! Computer won :(';
         }
 
-        /* Display current scores */
 
-        console.log(`You have won ${playerCount} times`);
-        console.log(`the computer has won ${computerCount} times`);
-        
-     }
+    }
 
-     /*evaluate who won the game and inform the outcome */
+}
 
+//function to reload web page to start over
+function reloadGame(){
 
-// Creation of button nodes
-const rockBtn = document.querySelector('#rock-button');
+    window.location.reload();
+}
 
-const paperBtn = document.querySelector('#paper-button');
-
-const scissorsBtn = document.querySelector('#scissors-button');
-
-console.log(rockBtn);
-
-console.log(paperBtn);
-
-console.log(scissorsBtn);
-
-rockBtn.addEventListener('click', () => singleRound('rock'));
-
-paperBtn.addEventListener('click', () => singleRound('paper'));
-
-scissorsBtn.addEventListener('click', () => singleRound('scissors'));
-
-/*
-const btn = document.querySelector('#btn');
-btn.addEventListener('click', () => {
-  alert("Hello World");
-});
-
-*/
